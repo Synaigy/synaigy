@@ -213,16 +213,7 @@ export async function createProject(
 
   try {
     // Copy template files
-    await fsExtra.copy(templateDir, targetDir, {
-      filter: (src) => {
-        // Skip node_modules and .git directory, but allow other dot files
-        const relativePath = path.relative(templateDir, src);
-        return (
-          !relativePath.includes("node_modules") &&
-          !relativePath.includes(".git")
-        );
-      },
-    });
+    await fsExtra.copy(templateDir, targetDir);
 
     // Update package.json name
     const packageJsonPath = path.join(targetDir, "package.json");
