@@ -161,7 +161,7 @@ export async function createProject(
     templateName = response.template;
   }
 
-  const templateDir = path.join(templatesDir, templateName);
+  const templateDir = path.join(templatesDir, "templates", templateName);
   const targetDir = path.join(process.cwd(), projectName);
 
   // Check if template exists
