@@ -1,0 +1,43 @@
+{
+  "name": "synaigy-examples-monorepo",
+  "version": "1.0.0",
+  "description": "Synaigy example monorepo",
+  "private": true,
+  "license": "MIT",
+  "workspaces": [
+    "packages/*",
+    "templates/*"
+  ],
+  "packageManager": "pnpm@9.14.2",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "test": "turbo run test",
+    "prepare": "husky install",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "pnpm build && changeset publish"
+  },
+  "author": "benedikt.grimm@synaigy.com",
+  "devDependencies": {
+    "@changesets/cli": "^2.28.1",
+    "@commitlint/cli": "^19.7.1",
+    "@commitlint/config-conventional": "^19.7.1",
+    "@eslint/compat": "^1.2.7",
+    "@eslint/eslintrc": "^3",
+    "@eslint/js": "^9.21.0",
+    "@types/jest": "^29.5.14",
+    "@typescript-eslint/eslint-plugin": "^8.26.0",
+    "@typescript-eslint/parser": "^8.26.0",
+    "eslint": "^9",
+    "eslint-config-prettier": "^9",
+    "eslint-import-resolver-typescript": "^3.8.3",
+    "husky": "^9.1.7",
+    "jest": "^29.7.0",
+    "prettier": "^3.5.3",
+    "ts-jest": "^29.2.6",
+    "turbo": "2.4.4"
+  }
+}

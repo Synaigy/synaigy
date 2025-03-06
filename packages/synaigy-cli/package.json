@@ -1,0 +1,47 @@
+{
+  "name": "synaigy",
+  "version": "1.0.5",
+  "description": "Synaigy CLI Tool for generating projects from templates",
+  "main": "dist/index.js",
+  "type": "module",
+  "bin": {
+    "synaigy": "./bin.js"
+  },
+  "files": [
+    "dist",
+    "bin.js"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint src/**/*.ts",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "cli",
+    "synaigy",
+    "generator"
+  ],
+  "author": "benedikt.grimm@synaigy.com",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^11.1.0",
+    "execa": "^8.0.1",
+    "fs-extra": "^11.1.1",
+    "ora": "^7.0.1",
+    "prompts": "^2.4.2"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^22.13.9",
+    "@types/prompts": "^2.4.9",
+    "eslint": "^9",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.2"
+  }
+}

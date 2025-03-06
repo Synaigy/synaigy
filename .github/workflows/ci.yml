@@ -1,0 +1,93 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  build-and-test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    # Make build-and-test a required check for PRs
+    if: ${{ github.event_name == 'pull_request' || github.event_name == 'push' }}
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build
+        run: pnpm build
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Test
+        run: pnpm test
+
+  validate-changesets:
+    name: Validate Changesets
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' }}
+    needs: build-and-test
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      # Verify that a changeset exists for non-docs PRs
+      # Skip for PRs with "docs:" or "chore:" prefix or containing [skip-changeset] in the title
+      - name: Check for changesets
+        id: check-changeset
+        run: |
+          if [[ "${{ github.event.pull_request.title }}" =~ ^(docs:|chore:) ]] || 
+             [[ "${{ github.event.pull_request.title }}" =~ \[skip-changeset\] ]]; then
+            echo "PR is docs or chore related, or has [skip-changeset] tag, skipping changeset check"
+            exit 0
+          fi
+
+          # Check if at least one changeset file exists
+          CHANGESET_COUNT=$(find .changeset -name "*.md" -not -name "README.md" | wc -l)
+
+          if [ $CHANGESET_COUNT -eq 0 ]; then
+            echo "::error::No changeset found! Run 'pnpm changeset' to create one."
+            echo "::error::If this PR doesn't need a changeset, add [skip-changeset] to the PR title."
+            exit 1
+          else
+            echo "Found $CHANGESET_COUNT changeset(s)"
+          fi

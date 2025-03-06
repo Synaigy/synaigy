@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* OVH brand colors */
+  --ovh-blue: #0050d7;
+  --ovh-dark-blue: #000f3d;
+  --ovh-light-blue: #4d90fe;
+  --ovh-dark: #0f1941;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #000f3d;
+    --foreground: #f5f5f7;
+  }
+}
