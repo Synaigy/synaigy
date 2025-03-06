@@ -1,6 +1,6 @@
 {
   "name": "synaigy",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Synaigy CLI Tool for generating projects from templates",
   "main": "dist/index.js",
   "type": "module",
