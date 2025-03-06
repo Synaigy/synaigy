@@ -8,8 +8,12 @@ export default function Chat() {
   const { messages, input, handleInputChange, handleSubmit } = useChat();
 
   const handleSuggestionClick = (suggestion: string) => {
-    handleInputChange({ target: { value: suggestion } } as any);
-    handleSubmit({ preventDefault: () => {} } as any);
+    handleInputChange({
+      target: { value: suggestion },
+    } as React.ChangeEvent<HTMLInputElement>);
+    handleSubmit({
+      preventDefault: () => {},
+    } as React.FormEvent<HTMLFormElement>);
   };
 
   return (
