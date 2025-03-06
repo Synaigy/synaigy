@@ -1,5 +1,11 @@
 # synaigy
 
+## 1.0.10
+
+### Patch Changes
+
+- f4899f3: Fixed issue with missing gitignore and example .env
+
 ## 1.0.9
 
 ### Patch Changes
