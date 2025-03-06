@@ -14,7 +14,7 @@ interface CreateOptions {
 }
 
 // GitHub repository information
-const GITHUB_REPO = "synbgrimm/testrepo";
+const GITHUB_REPO = "synaigy/synaigy";
 const GITHUB_BRANCH = "main";
 
 // Check if we're in development mode
