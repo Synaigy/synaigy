@@ -76,10 +76,19 @@ const getAvailableTemplates = async (
   templatesDir: string
 ): Promise<string[]> => {
   try {
-    const entries = await fs.readdir(templatesDir, { withFileTypes: true });
+    // Ensure we're looking at the correct templates directory
+    const entries = await fs.readdir(path.join(templatesDir, "templates"), {
+      withFileTypes: true,
+    });
+
     // Only include directories and filter out hidden ones
     return entries
-      .filter((entry) => entry.isDirectory() && !entry.name.startsWith("."))
+      .filter(
+        (entry) =>
+          entry.isDirectory() &&
+          !entry.name.startsWith(".") &&
+          !["node_modules"].includes(entry.name)
+      )
       .map((entry) => entry.name);
   } catch (error) {
     console.error(`Error getting templates: ${error}`);
