@@ -1,5 +1,11 @@
 # synaigy
 
+## 1.0.9
+
+### Patch Changes
+
+- 8d382de: Fixed the wrong template folder for copying
+
 ## 1.0.8
 
 ### Patch Changes
