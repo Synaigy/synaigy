@@ -1,5 +1,11 @@
 # synaigy
 
+## 1.0.8
+
+### Patch Changes
+
+- 28bf46d: Updated wrong templates folder
+
 ## 1.0.7
 
 ### Patch Changes
