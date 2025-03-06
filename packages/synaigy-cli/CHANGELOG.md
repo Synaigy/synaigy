@@ -1,5 +1,11 @@
 # synaigy
 
+## 1.0.11
+
+### Patch Changes
+
+- c307eef: Fixed issue with gitignore missed out in copy process
+
 ## 1.0.10
 
 ### Patch Changes
