@@ -1,8 +1,13 @@
 import * as fs from "fs/promises";
 import * as path from "path";
+
 import chalk from "chalk";
 import { Command } from "commander";
 import prompts from "prompts";
+
+import { ConverterFactory } from "../figma/converters/ConverterFactory.js";
+import { OutputFormat } from "../figma/converters/types.js";
+import { fetchFigmaVariables } from "../figma/utils/api.js";
 import {
   configExists,
   loadConfig,
@@ -10,9 +15,6 @@ import {
   extractFigmaFileId,
   FigmaSyncConfig,
 } from "../figma/utils/config.js";
-import { fetchFigmaVariables } from "../figma/utils/api.js";
-import { ConverterFactory } from "../figma/converters/ConverterFactory.js";
-import { OutputFormat } from "../figma/converters/types.js";
 
 // Interface for command options
 interface CommandOptions {
