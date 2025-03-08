@@ -1,5 +1,11 @@
 # synaigy
 
+## 1.0.12
+
+### Patch Changes
+
+- c39205a: Added new figmy sync command
+
 ## 1.0.11
 
 ### Patch Changes
