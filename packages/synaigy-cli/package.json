@@ -24,10 +24,15 @@
   "keywords": [
     "cli",
     "synaigy",
-    "generator"
+    "generator",
+    "figma",
+    "tailwind"
   ],
   "author": "benedikt.grimm@synaigy.com",
   "license": "ISC",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "dependencies": {
     "chalk": "^5.3.0",
     "commander": "^11.1.0",

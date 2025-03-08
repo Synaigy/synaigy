@@ -17,6 +17,32 @@ This repository contains the Synaigy CLI tool and project templates, designed to
 - 🧪 Comprehensive testing setup
 - 📝 Automated changelog generation
 
+## Commands
+
+### Create
+
+Create a new project from a template:
+
+```bash
+synaigy create my-new-project
+```
+
+### Figma Sync
+
+Sync Figma local variables to Tailwind configuration:
+
+```bash
+synaigy figma-sync
+```
+
+This command:
+
+- Prompts for Figma file URL, API token, output path, and design system type
+- Stores configuration in `.synaigyrc` file (make sure to add this to `.gitignore`)
+- Fetches variables from Figma Variables API
+- Converts the variables to a Tailwind v4 compatible configuration
+- Currently focuses on color modes from Figma
+
 ## Development
 
 This is a pnpm monorepo. To set up the development environment:
